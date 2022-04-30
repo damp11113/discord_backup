@@ -15,7 +15,6 @@ from discord_backup.backup import BackupServer
 from discord_backup.info import BackupInfo
 from discord_backup.loader import BackupLoader
 from discord.ext import commands
-from discord.ext.tasks import task
 import logging
 
 logging.basicConfig(level=logging.INFO)
@@ -82,9 +81,8 @@ async def load(ctx, filename):
                 await m.edit(content='Loading backup...')
                 try:
                     backup = BackupLoader(bot, guild, json)
-                    # run task await backup.load(guild, user)
-                    task
                     # create message with bot
+                    backup.load()
                     # get main channel
                     channel = guild.system_channel
                     # create embed

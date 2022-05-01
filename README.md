@@ -82,7 +82,7 @@ async def load(ctx, filename):
                 try:
                     backup = BackupLoader(bot, guild, json)
                     # create message with bot
-                    backup.load()
+                    await backup.load(guild, user)
                     # get main channel
                     channel = guild.system_channel
                     # create embed
